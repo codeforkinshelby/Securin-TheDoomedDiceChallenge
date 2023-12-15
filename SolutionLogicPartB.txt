@@ -1,0 +1,89 @@
+THE DOOMED DICE CHALLENGE 
+SOLUTION
+Part B
+Upon contemplating and reading the question, 
+No. of Dices: 2 (6 sided)
+
+Values in dices range from 1 to 6
+
+Thus, 
+Minimum combined sum = 1 + 1 = 2
+Maximum combined sum = 6 + 6 = 12
+
+Now, both the dice are doomed, that is all their face values becomes 0;
+
+Original Dice_A and Dice_B = [1, 2, 3, 4, 5, 6]
+
+After Dooming, Dice_A = Dice_B = [0, 0, 0, 0, 0, 0]
+
+Now,
+The task is to un-doom the dice, by finding out possible combinations for both dice A and dice B, such that the below constraints are addressed/satisfied:
+
+Constraints
+1.	Die A cannot have face value exceeding 4
+2.	More than one face can have the same no. of spots (same face value)
+3.	Die B may have as many spots, even exceeding 6
+
+The combination should be done in such a way that the original probability of the dice and the new undoomed dice must remain the same.
+
+Original Probabilities:
+Probability = (No. of favorable outcomes / Total outcomes in sample space)
+
+For example 
+To find the probability of getting Sum = 2 when rolling both dice,
+Now for getting Sum value as 2, the only possible dice outcome is
+Dice A = 1
+Dice B = 1
+Sum = 1+1 = 2
+
+P(Sum = 2) = (probability of getting 1 while rolling Dice A)*(probability of getting 1 while rolling Dice B)
+
+Now, 
+Probability of getting 1 in Dice A = (when outcome is 1/ total outcomes possible)
+P(1) = ⅙
+Similarly for Dice B also the probability of getting 1 is ⅙
+
+Thus, P(Sum = 2) = ⅙*⅙ = 1/36 = 0.02777 = 2.77%
+
+Similarly finding all the probabilities we get (For original dice A and B),
+P(Sum = 2): 0.027777777777777776 = 2.78
+P(Sum = 3): 0.05555555555555555 = 5.56
+P(Sum = 4): 0.08333333333333333 = 8.33
+P(Sum = 5): 0.1111111111111111 = 11.11
+P(Sum = 6): 0.1388888888888889 = 13.89
+P(Sum = 7): 0.16666666666666666 = 16.67
+P(Sum = 8): 0.1388888888888889 = 13.89
+P(Sum = 9): 0.1111111111111111 = 11.11
+P(Sum = 10): 0.08333333333333333 = 8.33
+P(Sum = 11): 0.05555555555555555 = 5.56
+P(Sum = 12): 0.027777777777777776 = 2.78
+
+For solving this problem,
+
+We know that the minimum sum needs be 2 and maximum sum needs to be 12, just like in the original dice. 
+
+Thus, for maintaining the above consistency of sums, there should definitely be value 1 in both dice 
+Thus, we can conclude,
+New_Die_A = [1, ?, ?, ?, ?, ?]
+New_Die_B = [1, ?, ?, ?, ?, ?]
+
+Step 1: So, we need to find out only the rest 5 missing values in each die, satisfying the constraints. 
+
+Step 2: Now we start iterating over all possible combinations for the dice A and B.
+E.g.,
+First 11 combinations of Dice A:
+[[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 2], [1, 1, 1, 1, 1, 3], [1, 1, 1, 1, 1, 4], [1, 1, 1, 1, 2, 2], [1, 1, 1, 1, 2, 3], [1, 1, 1, 1, 2, 4], [1, 1, 1, 1, 3, 3], [1, 1, 1, 1, 3, 4], [1, 1, 1, 1, 4, 4], [1, 1, 1, 2, 2, 2]]
+
+First 11 combinations of Dice B:
+ [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 7], [1, 2, 3, 4, 5, 8], [1, 2, 3, 4, 5, 9], [1, 2, 3, 4, 5, 10], [1, 2, 3, 4, 5, 11], [1, 2, 3, 4, 6, 7], [1, 2, 3, 4, 6, 8], [1, 2, 3, 4, 6, 9], [1, 2, 3, 4, 6, 10], [1, 2, 3, 4, 6, 11]] 
+
+Step 3: Going further we compare each possible combination from dice A with dice B, checking whether the probability of the new transformed values matches with the original probability of sums obtained from the original dice.
+
+Step 4: If the condition is satisfied, the un-doomed combination will be returned by the un-doom function, along with probability values
+ 
+Step 5: Else the search of elements continues until the conditions get exhausted.
+
+RESULT:
+Upon finding out the possible combination which satisfies the given constraint is,
+New_Die_A = [1, 2, 2, 3, 3, 4]
+New_Die_B = [1, 3, 4, 5, 6, 8]
